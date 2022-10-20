@@ -28,9 +28,11 @@ module.exports = function ValidatorRegister(data){
     if(validator.isEmpty(data.confirm)){
         errors.confirm="Required confirm";
     }
-    if(!validator.equals(data.confirm,data.password)){
+    if(!validator.equals(data.password,data.confirm)){
         errors.confirm="password not match";
     }
+    
+    
         return {
             errors,
             isValid: isEmpty(errors)
