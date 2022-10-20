@@ -1,5 +1,9 @@
 const UserModel = require('../models/user.model')
 const ValidatorRegister = require('../validation/Register')
+
+
+
+
 const Register = async (req, res) => {
 const bcrybt = require('bcryptjs')
     const {
@@ -35,10 +39,25 @@ const bcrybt = require('bcryptjs')
         })
     }
 }
+const Login =async (req,res)=>{
+    try {
+        UserModel.findOne({email : req.body.email})
+        .then(user=>{
+            if(!user){
+                res.status(404).json({message:"user not found"})
+            }else{
+                res.send(user)
+            }
+        })
+    } catch (error) {
+        res.status(404).json(error.message)
+    }
+}
 
 
 
 
 module.exports = {
-    Register
+    Register,
+    Login
 }
