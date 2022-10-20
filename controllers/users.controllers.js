@@ -1,11 +1,12 @@
 const UserModel = require('../models/user.model')
 const ValidatorRegister = require('../validation/Register')
-
+const ValidatorLogin = require('../validation/login')
+const bcrypt = require('bcryptjs');
 
 
 
 const Register = async (req, res) => {
-const bcrybt = require('bcryptjs')
+    const bcrybt = require('bcryptjs')
     const {
         errors,
         isValid
@@ -16,19 +17,19 @@ const bcrybt = require('bcryptjs')
             res.status(404).json(errors)
         } else {
             UserModel.findOne({
-                    email: req.body.email
-                })
+                email: req.body.email
+            })
                 .then(async (exist) => {
                     if (exist) {
                         errors.email = "user exist"
                         res.status(404).json(errors)
                     } else {
-                        const hash = bcrybt.hashSync(req.body.password,10)
-                        req.body.password=hash
+                        const hash = bcrybt.hashSync(req.body.password, 10)
+                        req.body.password = hash
                         req.body.role = "USER"
                         await UserModel.create(req.body)
                         res.status(200).json({
-                        message: 'ok'
+                            message: 'ok'
                         })
                     }
                 })
@@ -39,16 +40,35 @@ const bcrybt = require('bcryptjs')
         })
     }
 }
-const Login =async (req,res)=>{
+const Login = async (req, res) => {
+    const {
+        errors,
+        isValid
+    } = ValidatorLogin(req.body)
     try {
-        UserModel.findOne({email : req.body.email})
-        .then(user=>{
-            if(!user){
-                res.status(404).json({message:"user not found"})
-            }else{
-                res.send(user)
-            }
-        })
+        if (!isValid) {
+            res.status(404).json(errors)
+        } else {
+            UserModel.findOne({email: req.body.email})
+            .then(user=>{
+                if(!user){
+                    errors.email="user not found"
+                    res.status(404).json(errors)
+                }else{
+                    bcrypt.compare(req.body.password, user.password)
+                    .then(ismach => {
+                        if (!ismach) {
+                            errors.password = "incorect password"
+                            res.status(404).json(errors)
+                        } else {
+                            res.send('oke')
+                        }
+                    })
+
+                }
+            })
+           
+        }
     } catch (error) {
         res.status(404).json(error.message)
     }

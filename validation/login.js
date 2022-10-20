@@ -3,7 +3,7 @@ const validator = require('validator')
 
 
 
-module.exports = function ValidatorRegister(data){
+module.exports = function ValidatorLogin(data){
 
     let errors = {};
 
