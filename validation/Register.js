@@ -15,14 +15,21 @@ module.exports = function ValidatorRegister(data){
     if(validator.isEmpty(data.name)){
         errors.name="Required name";
     }
+    if(!validator.isEmail(data.email)){
+        errors.email="Required format email";
+    }
     if(validator.isEmpty(data.email)){
         errors.email="Required email";
     }
+   
     if(validator.isEmpty(data.password)){
         errors.password="Required password";
     }
     if(validator.isEmpty(data.confirm)){
         errors.confirm="Required confirm";
+    }
+    if(!validator.equals(data.confirm,data.password)){
+        errors.confirm="password not match";
     }
         return {
             errors,
