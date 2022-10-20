@@ -3,6 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+mongoose.connect(process.env.DB)
+.then(console.log('db-connected'))
+.catch(err=>console.log(err))
+
+
 
 /* Importing the index.js file from the routes folder. */
 var indexRouter = require('./routes/index');
