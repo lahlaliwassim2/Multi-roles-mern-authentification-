@@ -94,7 +94,15 @@ const Login = async (req, res) => {
 
 
 
+const Test = (req,res)=>{
+res.send('page test')
+}
+
+
+
+
 module.exports = {
     Register,
-    Login
+    Login,
+    Test
 }
