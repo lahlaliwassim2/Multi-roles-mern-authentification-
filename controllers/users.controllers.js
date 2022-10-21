@@ -95,7 +95,7 @@ const Login = async (req, res) => {
 
 
 const Test = (req,res)=>{
-res.send('page test')
+res.send(req.user)
 }
 
 
