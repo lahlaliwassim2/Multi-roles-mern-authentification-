@@ -95,8 +95,11 @@ const Login = async (req, res) => {
 
 
 const Test = (req,res)=>{
-res.send(req.user)
+res.send("user")
 }
+const Admin = (req,res)=>{
+    res.send("admin")
+    }
 
 
 
@@ -104,5 +107,6 @@ res.send(req.user)
 module.exports = {
     Register,
     Login,
-    Test
+    Test,
+    Admin
 }
