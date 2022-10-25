@@ -1,3 +1,4 @@
+/* The above code is creating a schema for the user profile. */
 const mongoose= require('mongoose')
 const Schema = mongoose.Schema
 
@@ -5,7 +6,8 @@ const UserProfil = new Schema(
     {
         user:{
             type:Schema.Types.ObjectId,
-            ref:"users"
+            ref:"users",
+            required:true
         },
         tel: "string",
         city:{ 
