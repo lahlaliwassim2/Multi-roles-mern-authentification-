@@ -7,30 +7,26 @@ module.exports = function ValidatorProfil(data){
 
     let errors = {};
 
-    data.name = !isEmpty(data.name) ? data.name : ""
-    data.email = !isEmpty(data.email) ? data.email : ""
-    data.password = !isEmpty(data.password) ? data.password : ""
-    data.confirm = !isEmpty(data.confirm) ? data.confirm : ""
+    data.tel = !isEmpty(data.tel) ? data.tel : ""
+    data.city = !isEmpty(data.city) ? data.city : ""
+    data.country = !isEmpty(data.password) ? data.password : ""
+    data.adresse = !isEmpty(data.confirm) ? data.confirm : ""
 
-    if(validator.isEmpty(data.name)){
-        errors.name="Required name";
-    }
-    if(!validator.isEmail(data.email)){
-        errors.email="Required format email";
-    }
-    if(validator.isEmpty(data.email)){
-        errors.email="Required email";
+    if(validator.isEmpty(data.tel)){
+        errors.tel="Required tel";
     }
    
-    if(validator.isEmpty(data.password)){
-        errors.password="Required password";
+    if(validator.isEmpty(data.city)){
+        errors.city="Required city";
     }
-    if(validator.isEmpty(data.confirm)){
-        errors.confirm="Required confirm";
+   
+    if(validator.isEmpty(data.adresse)){
+        errors.adresse="Required adresse";
     }
-    if(!validator.equals(data.password,data.confirm)){
-        errors.confirm="password not match";
+    if(validator.isEmpty(data.country)){
+        errors.country="Required country";
     }
+    
     
     
         return {
