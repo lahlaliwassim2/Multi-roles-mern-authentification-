@@ -9,8 +9,8 @@ module.exports = function ValidatorProfil(data){
 
     data.tel = !isEmpty(data.tel) ? data.tel : ""
     data.city = !isEmpty(data.city) ? data.city : ""
-    data.country = !isEmpty(data.password) ? data.password : ""
-    data.adresse = !isEmpty(data.confirm) ? data.confirm : ""
+    data.country = !isEmpty(data.country) ? data.country : ""
+    data.adresse = !isEmpty(data.adresse) ? data.adresse : ""
 
     if(validator.isEmpty(data.tel)){
         errors.tel="Required tel";

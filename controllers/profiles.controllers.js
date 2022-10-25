@@ -1,4 +1,5 @@
 const profilModel = require('../models/profil.model')
+const ValidatorProfil = require('../validation/profil')
 
 /**
  * If the user doesn't have a profile, create one, otherwise update the existing one.
@@ -6,6 +7,10 @@ const profilModel = require('../models/profil.model')
  * @param res - The response object.
  */
 const AddProfile =async(req,res)=>{
+    const {errors,isValid}  = ValidatorProfil(req.body)
+    if(!isValid){
+        res.status(400).json(errors)
+    }
    try {
 
      profilModel.findOne({user: req.user.id})
@@ -30,18 +35,40 @@ const AddProfile =async(req,res)=>{
 }
 
 
-const FindAllProfiles =(req,res)=>{
-    res.send('ok')
+const FindAllProfiles = async (req,res)=>{
+   try {
+    await profilModel.find()
+    .then((result)=>{
+        res.status(200).json(result)
+    })
+   } catch (error) {
+    res.status(404).json(error.message)
+   }
+   
 }
 
 
-const FindSingleProfil =(req,res)=>{
-    res.send('ok')
+const FindSingleProfil = async(req,res)=>{
+    try {
+        await profilModel.findOne({id: req.user.id})
+        .then((result)=>{
+            res.status(200).json(result)
+        })
+       } catch (error) {
+        res.status(404).json(error.message)
+       }
 }
 
  
-const DeleteProfil =(req,res)=>{
-    res.send('ok')
+const DeleteProfil =async(req,res)=>{
+    try {
+        await profilModel.findOneAndRemove({id: req.params.id})
+        .then((result)=>{
+            res.status(200).json({message:"mchate"})
+        })
+       } catch (error) {
+        res.status(404).json(error.message)
+       }
 }
 
 module.exports={

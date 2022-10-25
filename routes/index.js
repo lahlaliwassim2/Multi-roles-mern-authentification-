@@ -22,13 +22,13 @@ passport.authenticate('jwt', { session: false }),
 inRole(ROLES.ADMIN , ROLES.USER),
 FindAllProfiles)
 
-router.get('/profiles/:id', 
+router.get('/profile', 
 passport.authenticate('jwt', { session: false }),
 FindSingleProfil)
 
 router.delete('/profiles/:id', 
 passport.authenticate('jwt', { session: false }),
-inRole(ROLES.ADMIN),
+inRole(ROLES.USER),
 DeleteProfil)
 
 
