@@ -19,13 +19,14 @@ module.exports = function ValidatorProfil(data){
     if(validator.isEmpty(data.city)){
         errors.city="Required city";
     }
-   
     if(validator.isEmpty(data.adresse)){
         errors.adresse="Required adresse";
     }
     if(validator.isEmpty(data.country)){
         errors.country="Required country";
     }
+   
+ 
     
     
     

@@ -10,7 +10,7 @@ const AddProfile =async(req,res)=>{
     const {errors,isValid}  = ValidatorProfil(req.body)
     if(!isValid){
         res.status(400).json(errors)
-    }
+    }else{
    try {
 
      profilModel.findOne({user: req.user.id})
@@ -34,10 +34,10 @@ const AddProfile =async(req,res)=>{
    }
 }
 
-
+}
 const FindAllProfiles = async (req,res)=>{
    try {
-    await profilModel.find()
+    await profilModel.find().populate('user',["role","email"])
     .then((result)=>{
         res.status(200).json(result)
     })
@@ -50,7 +50,7 @@ const FindAllProfiles = async (req,res)=>{
 
 const FindSingleProfil = async(req,res)=>{
     try {
-        await profilModel.findOne({id: req.user.id})
+        await profilModel.findOne({user: req.user.id}).populate("user",["role"])
         .then((result)=>{
             res.status(200).json(result)
         })
