@@ -21,4 +21,4 @@ timestamps:true
     }
 )
 
-module.exports = mongoose.model('profiles',UserProfil   )
+module.exports = mongoose.model('profiles',UserProfil )
