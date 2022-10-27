@@ -43,6 +43,7 @@ const Register = async (req, res) => {
         })
     }
 }
+
 /**
  * It checks if the user exists in the database, if it does, it compares the password with the one in
  * the database, if it matches, it sends a response, if it doesn't, it sends an error message.

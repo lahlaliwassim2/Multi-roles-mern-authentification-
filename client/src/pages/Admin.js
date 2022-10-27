@@ -3,15 +3,15 @@ import React from 'react'
 function Admin() {
   return (
    
-      <div class="container p-4 mt-4">
-        <div class="row justify-content-evenly mt-4">
+      <div className="container p-4 mt-4">
+        <div className="row justify-content-evenly mt-4">
            
-           <div class="col-lg-12 col-md-12 mt-4">
-               <div class="d-flex">
-                <i class="fa-solid fa-user fs-1 mx-2"></i> <h2>Profiles list</h2>
+           <div className="col-lg-12 col-md-12 mt-4">
+               <div className="d-flex">
+                <i className="fa-solid fa-user fs-1 mx-2"></i> <h2>Profiles list</h2>
                </div>
-               <div class="shadow-lg p-3 mb-5 bg-body rounded" style={{backgroundColor: "white"}}>
-                <table class="table table-hover">
+               <div className="shadow-lg p-3 mb-5 bg-body rounded" style={{backgroundColor: "white"}}>
+                <table className="table table-hover">
                     <thead>
                       <tr>
                         <th scope="col">name</th>
@@ -33,7 +33,7 @@ function Admin() {
                         <td>tunisia</td>
                         <td>tunisia</td>
                         <td>im full stack developer</td>
-                        <td><button class="btn btn-outline-danger">Delete</button></td>
+                        <td><button className="btn btn-outline-danger">Delete</button></td>
                       </tr>
                     </tbody>
                   </table>
