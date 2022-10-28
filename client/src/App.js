@@ -13,8 +13,12 @@ import Login from './pages/Login';
 // import Navbar from './components/Navbar';
 import Navbar from './components/Navbar'
 import NotFound from './pages/NotFound';
+import PrivateRouter from './components/PrivateRouter';
 
 function App() {
+  const user = {
+    isConnected :false
+  }
   return (
     <BrowserRouter>
     <div className="bg-light" style={{height: "100vh"}}>
@@ -22,9 +26,23 @@ function App() {
       <Navbar />
       <Routes>
        
-        <Route path="/" element={<Register />}/>
-        <Route path="/profil" element={<Profil />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/" element={
+        <PrivateRouter user={user}>
+           <Register />
+        </PrivateRouter>
+       }/>
+        <Route path="/profil" element={
+        <PrivateRouter user={user} >
+
+        <Profil />
+        </PrivateRouter>
+      } />
+        <Route path="/admin" element={
+        <PrivateRouter user={user}>
+             <Admin />
+        </PrivateRouter>
+     
+        } />
         <Route path="/login" element={<Login />}  />
         <Route path="*" element={<NotFound />}  />
       </Routes>
