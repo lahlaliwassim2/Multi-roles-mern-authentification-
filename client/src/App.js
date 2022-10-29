@@ -22,13 +22,13 @@ function App() {
  /* A variable that is used to check if the user is connected or not. */
   const user = {
     isConnected :true,
-    role:"ADMIN"
+    role:"USER"
   }
   return (
     <BrowserRouter>
             <div className="bg-light" style={{height: "100vh"}}>
 
-            <Navbar />
+            <Navbar user={user}/>
   <Routes>
        
           <Route path="/" element={
