@@ -20,7 +20,6 @@ function Admin() {
                         <th scope="col">telephone</th>
                         <th scope="col">city</th>
                         <th scope="col">country</th>
-                        <th scope="col">bio</th>
                         <th scope="col">actions</th>
                       </tr>
                     </thead>
@@ -32,7 +31,6 @@ function Admin() {
                         <td>56666666</td>
                         <td>tunisia</td>
                         <td>tunisia</td>
-                        <td>im full stack developer</td>
                         <td><button className="btn btn-outline-danger">Delete</button></td>
                       </tr>
                     </tbody>

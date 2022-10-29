@@ -1,4 +1,5 @@
 import React from 'react'
+import Inputs from '../components/Inputs'
 
 function Profil() {
   return (
@@ -11,41 +12,20 @@ function Profil() {
                 <i class="fa-solid fa-user fs-1 mx-2"></i> <h2>Profile</h2>
                </div>
                <div class="p-6 shadow-lg p-3 mb-5 bg-body rounded" style={{backgroundColor:" white"}}>
-                   <form>
-                       <div class=" mb-3">
-                           <label  class="form-label">Telephone</label>
-                           <div class="input-group">
-                             <input type="text" class="form-control" name="tel"/>
-                           </div>
-                         </div>
-                       <div class=" mb-3">
-                         <label  class="form-label">City</label>
-                         <div class="input-group">
-                           <input type="text" class="form-control" name="city"/>
-                         </div>
-                       </div>
-                       <div class=" mb-3">
-                           <label  class="form-label">Country</label>
-                           <div class="input-group">
-                             <input type="text" class="form-control" name="country"/>
-                           </div>
-                         </div>
-                         <div class=" mb-3">
-                            <label  class="form-label">Bio</label>
-                            <div class="input-group">
-                              <input type="text" class="form-control" name="bio"/>
-                            </div>
-                          </div>
-                          <div class=" mb-3">
-                            <label  class="form-label">Address</label>
-                            <div class="input-group">
-                              <textarea type="text" class="form-control" name="address"></textarea>
-                            </div>
-                          </div>
-                       <div class="d-flex justify-content-between">
-                           <button type="submit" class="btn btn-outline-primary">Update <i class="fa-solid fa-floppy-disk"></i></button>
-                       </div>
-                     </form>
+          <form>
+                   <Inputs name="tel " type="text" label="Tel"  />
+
+                   <Inputs name="city" type="text" label="city" />
+
+                   <Inputs name="country" type="text" label="country" />
+
+                   <Inputs name="address" type="text" label="address" />
+
+                     
+                  <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-outline-primary">Update <i class="fa-solid fa-floppy-disk"></i></button>
+                  </div>  
+          </form>
             </div>
            </div>
        </div>
