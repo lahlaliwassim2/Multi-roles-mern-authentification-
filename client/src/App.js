@@ -14,38 +14,56 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar'
 import NotFound from './pages/NotFound';
 import PrivateRouter from './components/PrivateRouter';
+import NotAcces from './pages/NotAcces';
+import AdminRouter from './components/AdminRouter';
+import ForceRedirect from './components/ForceRedirect';
 
 function App() {
+ /* A variable that is used to check if the user is connected or not. */
   const user = {
-    isConnected :false
+    isConnected :true,
+    role:"USER"
   }
   return (
     <BrowserRouter>
-    <div className="bg-light" style={{height: "100vh"}}>
+            <div className="bg-light" style={{height: "100vh"}}>
 
-      <Navbar />
-      <Routes>
+            <Navbar />
+  <Routes>
        
-        <Route path="/" element={
-        <PrivateRouter user={user}>
-           <Register />
-        </PrivateRouter>
-       }/>
-        <Route path="/profil" element={
-        <PrivateRouter user={user} >
+          <Route path="/" element={
+             <PrivateRouter user={user}>
+                <Profil />
+             </PrivateRouter>
+           }/>
 
-        <Profil />
-        </PrivateRouter>
-      } />
-        <Route path="/admin" element={
-        <PrivateRouter user={user}>
-             <Admin />
-        </PrivateRouter>
+        
+          <Route path="/register" element={
+            <ForceRedirect user={user}>
+              <Register />
+            </ForceRedirect>        
+          } />
+          
+
+         <Route path="/login" element={
+           <ForceRedirect user={user}>
+               <Login />
+           </ForceRedirect>
+          }  />
+
+
+          <Route path="/admin" element={
+            <AdminRouter user={user}>
+               <Admin />
+            </AdminRouter>
      
-        } />
-        <Route path="/login" element={<Login />}  />
+          } />
+   
+
+
         <Route path="*" element={<NotFound />}  />
-      </Routes>
+        <Route path="/notacces" element={<NotAcces />}  />
+    </Routes>
     </div>
   </BrowserRouter >
   
