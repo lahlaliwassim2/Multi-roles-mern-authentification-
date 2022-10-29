@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Inputs from '../components/Inputs'
-function login() {
+function Login() {
+
+  const [form,setForm] = useState({})
+  const onChangeHandler=(e)=>{
+     setForm({
+       ...form,
+       [e.target.name]: e.target.value
+     })
+
+  }
+  const onSubmit =(e)=>{
+     e.preventDefault();
+     console.log(form)
+
+  }
   return (
    
      
@@ -12,9 +26,9 @@ function login() {
                     <i className="fa-solid fa-right-to-bracket fs-1 mx-2"></i> <h2>Login</h2>
                 </div>
                 <div className="p-6 shadow-lg p-3 mb-5 bg-body rounded" style={{backgroundColor: "white"}}>
-                    <form>
-                    <Inputs name="email " type="email" label="Email" icon=" fa-solid fa-at "  />
-                    <Inputs name="password " type="password" label="Password" icon=" fa-solid fa-key "  />
+                    <form onSubmit={onSubmit}>
+                    <Inputs name="email " type="email" label="Email" icon=" fa-solid fa-at "  onChangeHandler={onChangeHandler}/>
+                    <Inputs name="password " type="password" label="Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} />
                         
                         <div className="d-flex justify-content-between">
                             <button type="submit" className="btn btn-outline-primary">Save <i className="fa-solid fa-floppy-disk"></i></button>
@@ -29,4 +43,4 @@ function login() {
   )
 }
 
-export default login
+export default Login
