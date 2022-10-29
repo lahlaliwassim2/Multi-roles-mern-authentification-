@@ -22,7 +22,7 @@ function App() {
  /* A variable that is used to check if the user is connected or not. */
   const user = {
     isConnected :true,
-    role:"USER"
+    role:"ADMIN"
   }
   return (
     <BrowserRouter>
