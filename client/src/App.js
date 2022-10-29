@@ -21,7 +21,7 @@ import ForceRedirect from './components/ForceRedirect';
 function App() {
  /* A variable that is used to check if the user is connected or not. */
   const user = {
-    isConnected :true,
+    isConnected :false,
     role:"USER"
   }
   return (
