@@ -19,7 +19,7 @@ AddProfile)
 
 router.get('/profiles', 
 passport.authenticate('jwt', { session: false }),
-inRole(ROLES.ADMIN , ROLES.USER),
+inRole(ROLES.ADMIN ),
 FindAllProfiles)
 
 router.get('/profile', 
