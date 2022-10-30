@@ -26,7 +26,8 @@ function Login() {
                     <i className="fa-solid fa-right-to-bracket fs-1 mx-2"></i> <h2>Login</h2>
                 </div>
                 <div className="p-6 shadow-lg p-3 mb-5 bg-body rounded" style={{backgroundColor: "white"}}>
-                    <form onSubmit={onSubmit}>
+                  <form onSubmit={onSubmit}>
+
                     <Inputs name="email " type="email" label="Email" icon=" fa-solid fa-at "  onChangeHandler={onChangeHandler}/>
                     <Inputs name="password " type="password" label="Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} />
                         
@@ -34,7 +35,7 @@ function Login() {
                             <button type="submit" className="btn btn-outline-primary">Save <i className="fa-solid fa-floppy-disk"></i></button>
                             <a href="/">I dont'have account</a>
                         </div>
-                      </form>
+                  </form>
              </div>
             </div>
         </div>
