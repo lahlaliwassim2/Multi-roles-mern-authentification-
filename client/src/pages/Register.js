@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import Inputs from '../components/Inputs'
+import  {useDispatch } from 'react-redux'
+import { Registration } from '../redux/action/authAction'
 function Register() {
  
   const [form,setForm] = useState({})
+  const dispatch = useDispatch()
    const onChangeHandler=(e)=>{
       setForm({
         ...form,
@@ -12,7 +15,7 @@ function Register() {
    }
    const onSubmit =(e)=>{
       e.preventDefault();
-      console.log(form)
+      dispatch(Registration(form))
 
    }
 
@@ -30,7 +33,7 @@ function Register() {
 
                        <Inputs name="name" type="name" label="Name" icon="fa-solid fa-user" onChangeHandler={onChangeHandler} />
 
-                       <Inputs name="email " type="email" label="Email" icon=" fa-solid fa-at " onChangeHandler={onChangeHandler} />
+                       <Inputs name="email" type="email" label="Email" icon=" fa-solid fa-at " onChangeHandler={onChangeHandler} />
 
                        <Inputs name="password " type="password" label="Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} />
 

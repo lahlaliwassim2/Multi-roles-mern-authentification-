@@ -17,8 +17,8 @@ export default function(state = initialState , action){
                 ...state,
                 isConnected: !isEmpty(action.payload),
                 user: action.payload   //contenu depuis la response
-            }
-            ;
+            };
+            
     
         default:
            return state
