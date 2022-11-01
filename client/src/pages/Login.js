@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Inputs from '../components/Inputs'
+import { LoginAction } from '../redux/action/authAction'
 function Login() {
 
   const [form,setForm] = useState({})
+  const dispatch = useDispatch()
+
+  const errors = useSelector(state=>state.errors)
+  const navigate = useNavigate()
   const onChangeHandler=(e)=>{
      setForm({
        ...form,
@@ -12,8 +19,8 @@ function Login() {
   }
   const onSubmit =(e)=>{
      e.preventDefault();
-     console.log(form)
-
+     dispatch(LoginAction(form,navigate))
+ 
   }
   return (
    
@@ -28,8 +35,8 @@ function Login() {
                 <div className="p-6 shadow-lg p-3 mb-5 bg-body rounded" style={{backgroundColor: "white"}}>
                   <form onSubmit={onSubmit}>
 
-                    <Inputs name="email " type="email" label="Email" icon=" fa-solid fa-at "  onChangeHandler={onChangeHandler}/>
-                    <Inputs name="password " type="password" label="Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} />
+                    <Inputs name="email" type="email" label="Email" icon=" fa-solid fa-at "  onChangeHandler={onChangeHandler} errors={errors.email}/>
+                    <Inputs name="password" type="password" label="Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} errors={errors.password}/>
                         
                         <div className="d-flex justify-content-between">
                             <button type="submit" className="btn btn-outline-primary">Save <i className="fa-solid fa-floppy-disk"></i></button>

@@ -19,4 +19,21 @@ export const Registration = (form,navigate)=>dispatch=>{
                 payload:err.response.data
             })
     })
+
+    
+}
+
+
+
+export const LoginAction = (form,Navigate)=>dispatch=>{
+    axios.post('/api/login', form)
+    .then(res=>{
+       console.log(res)
+    })
+    .catch(err=>{
+            dispatch({
+                type: ERRORS,
+                payload:err.response.data
+            })
+    })
 }
