@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Inputs from '../components/Inputs'
-import  {useDispatch } from 'react-redux'
+import  {useDispatch, useSelector } from 'react-redux'
 import { Registration } from '../redux/action/authAction'
 function Register() {
  
   const [form,setForm] = useState({})
   const dispatch = useDispatch()
+  const errors = useSelector(state=>state.errors)
    const onChangeHandler=(e)=>{
       setForm({
         ...form,
@@ -31,13 +32,13 @@ function Register() {
                   
                     <form onSubmit={onSubmit}>
 
-                       <Inputs name="name" type="name" label="Name" icon="fa-solid fa-user" onChangeHandler={onChangeHandler} />
+                       <Inputs name="name" type="name" label="Name" icon="fa-solid fa-user" onChangeHandler={onChangeHandler} errors={errors.name}/>
 
-                       <Inputs name="email" type="email" label="Email" icon=" fa-solid fa-at " onChangeHandler={onChangeHandler} />
+                       <Inputs name="email" type="email" label="Email" icon=" fa-solid fa-at " onChangeHandler={onChangeHandler} errors={errors.email}/>
 
-                       <Inputs name="password " type="password" label="Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} />
+                       <Inputs name="password" type="password" label="Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} errors={errors.password}/>
 
-                       <Inputs name="confirmPassword " type="cpnfirmPassword" label="Confirm Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler}  />
+                       <Inputs name="confirm" type="Password" label="Confirm Password" icon=" fa-solid fa-key " onChangeHandler={onChangeHandler} errors={errors.confirm}/>
 
                         <div className="d-flex justify-content-between">
                             <button type="submit" className="btn btn-outline-primary">Save <i className="fa-solid fa-floppy-disk"></i></button>
