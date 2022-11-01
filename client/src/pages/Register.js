@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import Inputs from '../components/Inputs'
 import  {useDispatch, useSelector } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 import { Registration } from '../redux/action/authAction'
 function Register() {
  
   const [form,setForm] = useState({})
   const dispatch = useDispatch()
+
   const errors = useSelector(state=>state.errors)
+  const navigate = useNavigate()
    const onChangeHandler=(e)=>{
       setForm({
         ...form,
@@ -16,7 +19,7 @@ function Register() {
    }
    const onSubmit =(e)=>{
       e.preventDefault();
-      dispatch(Registration(form))
+      dispatch(Registration(form,navigate))
 
    }
 
