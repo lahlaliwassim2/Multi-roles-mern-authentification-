@@ -1,6 +1,8 @@
 import axios from 'axios'
+// import { decode } from 'jsonwebtoken'
+import jwt_decode from "jwt-decode";
 // import { Navigate } from 'react-router-dom'
-import { ERRORS } from '../type'
+import { ERRORS, SET_USER } from '../type'
 
 
 
@@ -25,10 +27,16 @@ export const Registration = (form,navigate)=>dispatch=>{
 
 
 
+
 export const LoginAction = (form,Navigate)=>dispatch=>{
     axios.post('/api/login', form)
     .then(res=>{
        console.log(res)
+       const {token}=res.data
+       localStorage.setItem('jwt',token)
+       const decode = jwt_decode(token)
+         // /* Dispatching the action `setUser` with the payload `decode` */
+            dispatch(setUser(decode))
     })
     .catch(err=>{
             dispatch({
@@ -37,3 +45,7 @@ export const LoginAction = (form,Navigate)=>dispatch=>{
             })
     })
 }
+export const setUser = (decode)=>({
+    type:SET_USER,
+    payload:decode
+})
