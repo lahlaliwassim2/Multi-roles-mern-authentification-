@@ -79,7 +79,7 @@ const Login = async (req, res) => {
                            process.env.PRIVATE, { expiresIn: '1h' });
                            res.status(200).json({
                             message:"mzyan",
-                            token:token
+                            token:"Bearer "+token
                            })
                         }
                     })
