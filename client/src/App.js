@@ -17,7 +17,13 @@ import PrivateRouter from './components/PrivateRouter';
 import NotAcces from './pages/NotAcces';
 import AdminRouter from './components/AdminRouter';
 import ForceRedirect from './components/ForceRedirect';
-
+import store from './redux/store'
+import { setUser } from './redux/action/authAction';
+import jwtDecode from 'jwt-decode';
+if(localStorage.jwt){
+  const decode = jwtDecode(localStorage.jwt)
+  store.dispatch(setUser(decode))
+}
 function App() {
  /* A variable that is used to check if the user is connected or not. */
   const user = {
